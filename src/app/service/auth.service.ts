@@ -37,8 +37,8 @@ export class AuthService {
       .post<AppResponse>(`${urlEndpoint.baseUrl}/auth/login`, login)
       .pipe(
         map((user) => {
-          this.userSubject.next(
-            window.btoa(login.username + ':' + login.password)
+          this.storageService.setAuthData(
+            window.btoa(login.username + ":" + login.password)
           );
           return user;
         })

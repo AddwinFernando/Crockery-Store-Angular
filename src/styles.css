@@ -1,16 +1,9 @@
-@import url("https://fonts.googleapis.com/css2?family=Exo+2&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Nunito&family=Poppins&family=Roboto:wght@400;500;900&display=swap');
 
 :root {
-  --primary-50: #fffbeb;
-  --primary-100: #fef3c7;
-  --primary-300: #fcd34d;
-  --primary-500: #f59e0b;
-  --primary-600: #d97706;
-  --primary-700: #b45309;
-  --primary-900: #78350f;
-  --secondary-100: #f1f5f9;
-  --secondary-500: #64748b;
-  --secondary-900: #0f172a;
+  --primary: white;
+  --secondary: #dcfa26;
+  --black:black;
   --red-100: #fee2e2;
   --red-300: #fca5a5;
   --red-500: #ef4444;
@@ -22,149 +15,75 @@
 }
 
 body {
-  font-family: "Exo 2", sans-serif;
-  background-color: var(--primary-50);
+  font-family: 'Nunito', sans-serif;
+  background-image: url("assets/bg.jpg") !important;
+  background-repeat: repeat-y;
+  margin: 0%;
+  padding: 0%;
 }
 
-/* text */
-.text-primary {
-  color: var(--primary-500) !important;
+.rt-cont{
+  background: black;
+}
+.lt-cont{
+  background-color: var(--primary);
+  border-top-right-radius: 35px;
+  border-bottom-right-radius: 35px;
+}
+.cont{
+  background-color: black;
+}
+.text-primary{
+  color: black !important;
+}
+.lr-input{
+  border: 1px solid rgba(0, 0, 0, 0.5) !important;
+  height: 50px;
+  border-radius: 15px;
+}
+.lr-input:focus{
+  border: 1px solid #defa2680 !important;
+}
+.lr-button{
+  height: 50px;
+  border-radius: 15px;
+  background-color: var(--secondary) !important;
+  font-weight: 500 !important;
+  border: 0px !important;
+  color: var(--black);
 }
 
-/* background */
-.bg-primary {
-  background-color: var(--primary-600) !important;
+.lr-button:hover{
+  background-color: var(--black) !important;
+  color: var(--primary);
+}
+.form{
+  margin-top: 15% !important;
 }
 
-/* button */
-.btn {
-  border-radius: var(--border-radius);
+.container-fluid{
+  padding: 0% !important;
 }
 
-.btn-primary {
-  color: var(--secondary-100);
-  background: var(--primary-500);
-  border: none;
+.btn1{
+  height: 50px;
+  border-radius: 15px;
+  background-color: var(--black) !important;
+  font-weight: 500 !important;
+  border: 0px !important;
+  color: var(--primary);
 }
 
-.btn-primary:hover,
-.btn-primary:active,
-.btn-primary:focus {
-  color: var(--secondary-100);
-  background: var(--primary-600) !important;
-  border: none;
+.btn2{
+  height: 40px !important;
+  border-radius: 15px !important;
+  background-color: var(--black) !important;
+  font-weight: 500 !important;
+  border: 0px !important;
+  color: var(--primary) !important;
 }
 
-.btn-danger {
-  color: var(--secondary-100);
-  background: var(--red-500);
-  border: none;
+.card{
+  padding: 1.5em .5em .5em;
+  border-radius: 2em;
 }
-
-.btn-danger:hover {
-  color: var(--secondary-100);
-  background: var(--red-700);
-  border: none;
-}
-
-.btn-success {
-  color: var(--secondary-100);
-  background: var(--green-500);
-  border: none;
-}
-
-.btn-success:hover {
-  color: var(--secondary-100);
-  background: var(--green-700);
-  border: none;
-}
-
-/* form */
-.form-control,
-.form-control:focus {
-  color: var(--primary-500);
-  background-color: var(--bs-body-bg);
-  border-color: var(--primary-500);
-  outline: 0;
-  box-shadow: 0 0 0 0.25rem var(--primary-300);
-}
-
-.form-label {
-  color: var(--primary-500);
-}
-
-.border {
-  border-right-color: var(--primary-300) !important;
-}
-
-/* background color */
-.bg-body-tertiary {
-  background-color: var(--primary-100) !important;
-}
-
-/* Custom */
-.error {
-  background-color: var(--red-100);
-  margin: 8px 0px;
-  padding: 2px 6px;
-  display: block;
-  color: var(--red-700);
-  border-radius: var(--border-radius);
-  height: 30px;
-  overflow: hidden;
-  white-space: nowrap;
-}
-
-.sideBarActive,
-.sideBarActive > a,
-.sideBarActive > a:hover,
-.sideBarActive > a:active {
-  color: var(--primary-500);
-  background-color: var(--primary-50) !important;
-  padding: 8px;
-}
-
-.sideBarItem,
-.sideBarItem > a {
-  color: var(--primary-500);
-  padding: 8px;
-}
-
-.sideBarItem > a:hover {
-  color: var(--primary-500);
-}
-
-.sideBarActive > .fa-solid {
-  color: var(--primary-500);
-}
-
-.sideBarItem:hover {
-  color: var(--primary-500);
-  background-color: var(--primary-50);
-  padding: 8px;
-}
-
-/* Icon */
-.fa-solid {
-  color: var(--primary-300);
-}
-
-.loader {
-  position: absolute;
-  min-height: 100vh;
-  min-width: 100vw;
-  opacity: 0.5;
-  background-color: #000;
-  z-index: 99;
-  left: 0;
-  top: 0;
-}
-
-.lottie-loader {
-  width: 150px !important;
-  height: 150px !important;
-  position: absolute;
-  top: 40%;
-  left: 45%;
-}
-

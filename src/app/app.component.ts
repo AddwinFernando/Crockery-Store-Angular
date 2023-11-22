@@ -33,8 +33,4 @@ export class AppComponent implements OnInit {
       this.isLoggedIn = isLoggedIn;
     });
   }
-
-  logout(): void {
-    this.authService.logout();
-  }
 }

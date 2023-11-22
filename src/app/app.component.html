@@ -2,18 +2,9 @@
   <router-outlet />
 </div>
 
-<div *ngIf="isLoggedIn" class="container-fluid vh-100 d-flex flex-column">
-  <div class="row">
-    <header class="navbar sticky-top bg-primary p-2 shadow">
-      <a class="navbar-brand px-3 text-white" routerLink="/">Shopping</a>
-      <div class="navbar-nav px-4 text-white" (click)="logout()" role="button">
-        <i class="fa-solid fa-solid fa-right-from-bracket text-white"></i>
-      </div>
-    </header>
-  </div>
-
-  <div *ngIf="isAdmin" class="row flex-grow-1">
-    <div class="sidebar border border-right col-2 p-0">
+<div class="container-fluid vh-100 d-flex flex-column">
+  <div *ngIf="isAdmin" class="">
+    <!-- <div class="sidebar border border-right col-2 p-0">
       <div class="bg-body-tertiary h-100" tabindex="-1">
         <div class="d-flex flex-column p-0 pt-3 overflow-y-auto">
           <ul class="nav flex-column">
@@ -36,8 +27,8 @@
           </ul>
         </div>
       </div>
-    </div>
-    <main class="col-10 px-4">
+    </div> -->
+    <main class="">
       <router-outlet></router-outlet>
     </main>
   </div>

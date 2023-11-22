@@ -1,0 +1,118 @@
+<!-- Add-Products -->
+<navbar></navbar>
+<div class="container d-flex justify-content-center">
+  <div class="card text-center add-card mt-4" style="width: 25rem">
+    <div class="card-body">
+      <h5 class="card-title text-center" id="editTittle">Add-Product</h5>
+      <form #addForm="ngForm" (ngSubmit)="add(addForm)">
+        <div class="input-group mb-3 mt-5">
+          <div class="form-floating mb-3">
+            <input
+              type="text"
+              class="form-control"
+              id="productName"
+              placeholder="name@example.com"
+              name="productName"
+              ngModel
+              #productName="ngModel"
+              [(ngModel)]="title"
+              [ngClass]="
+                productName.dirty && title.length == 0 ? 'is-invalid' : ''
+              "
+            />
+            <label for="floatingInput">Name</label>
+          </div>
+        </div>
+        <div class="input-group mb-3 mt-3">
+          <div class="form-floating mb-3">
+            <input
+              type="number"
+              class="form-control"
+              id="productPrice"
+              placeholder="name@example.com"
+              name="price"
+              [(ngModel)]="price"
+              ngModel
+              #productPrice="ngModel"
+              [ngClass]="
+                productPrice.dirty && (price < 0 || price == 0)
+                  ? 'is-invalid'
+                  : ''
+              "
+            />
+            <label for="floatingInput">Price</label>
+          </div>
+        </div>
+        <div class="input-group mb-3 mt-3">
+          <div class="form-floating">
+            <textarea
+              class="form-control"
+              placeholder="Leave a comment here"
+              id="productDescription"
+              style="height: 100px"
+              name="description"
+              [(ngModel)]="description"
+              ngModel
+              #productDesc="ngModel"
+              [ngClass]="
+                productDesc.dirty && description.length == 0 ? 'is-invalid' : ''
+              "
+            ></textarea>
+            <label for="floatingTextarea2">Description</label>
+          </div>
+        </div>
+        <div class="input-group mb-3 mt-3">
+          <div class="form-floating">
+            <select
+              class="form-select"
+              aria-label="Default select example"
+              id="categorySelector"
+              name="category"
+              [(ngModel)]="category"
+            >
+              <option
+                *ngFor="let category of categories"
+                value="{{ category.id }}"
+              >
+                {{ category.title }}
+              </option>
+            </select>
+            <label for="floatingTextarea2">Category</label>
+          </div>
+        </div>
+        <div class="input-group mb-3 mt-3">
+          <input
+            type="email"
+            class="form-control"
+            id="productThumbnail"
+            placeholder="name@example.com"
+            value="test@example.com"
+          />
+          <label for="floatingInputValue">Image URL</label>
+        </div>
+
+        <button type="submit" class="btn btn-primary mt-2">{{buttontxt}}</button>
+      </form>
+    </div>
+    <div>
+      <div
+        class="toast align-items-center"
+        role="alert"
+        aria-live="assertive"
+        aria-atomic="true"
+      >
+        <div class="d-flex">
+          <div class="toast-body" id="toastMessage">
+            Hello, world! This is a toast message.
+          </div>
+          <button
+            type="button"
+            class="btn-close me-2 m-auto"
+            data-bs-dismiss="toast"
+            aria-label="Close"
+          ></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

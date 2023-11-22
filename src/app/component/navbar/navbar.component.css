@@ -1,0 +1,15 @@
+.navbar{
+    margin-left: 25px !important;
+    margin-right: 25px !important;
+    background-color: white !important;
+    width: 100vw !important;
+    border-radius: 15px;
+}
+.nav{
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+.logo{
+    padding-left: 10px;
+}

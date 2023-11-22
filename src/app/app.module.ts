@@ -14,6 +14,11 @@ import { LottieModule } from 'ngx-lottie';
 import { AdminHomeComponent } from './component/admin/home/home.component';
 import { LoaderInterceptorService } from './service/interceptor/loaderInterceptor.service';
 import { AuthInterceptorService } from './service/interceptor/authInterceptor.service';
+import { AddProductsComponent } from './component/admin/add-products/add-products.component';
+import { AdminOrdersComponent } from './component/admin/orders/orders.component';
+import { CartComponent } from './component/cart/cart.component';
+import { OrdersComponent } from './component/orders/orders.component';
+import { NavbarComponent } from './component/navbar/navbar.component';
 
 export function playerFactory() {
   return player;
@@ -26,6 +31,11 @@ export function playerFactory() {
     LoginComponent,
     RegisterComponent,
     AdminHomeComponent,
+    AddProductsComponent,
+    AdminOrdersComponent,
+    CartComponent,
+    OrdersComponent,
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,1 +1,29 @@
-<p>home works!</p>
+<navbar></navbar>
+<div class="d-flex mt-4 px-5 justify-content-end w-100">
+  <a class="btn btn-primary" routerLink="/admin-add">Add Product</a>
+</div>
+<div class="container">
+  <table class="table mt-5">
+    <thead>
+      <tr>
+        <th scope="col">Image</th>
+        <th scope="col">Name</th>
+        <th scope="col">Description</th>
+        <th scope="col">Price</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody id="products">
+      <tr *ngFor="let item of items">
+        <th scope="row"><img src="" alt="Image" /></th>
+        <td>{{ item.title }}</td>
+        <td>{{ item.description }}</td>
+        <td>{{ item.price }}</td>
+        <td>
+          <button class="btn me-2" (click)="edit(item.id)">Edit</button
+          ><button class="btn btn-danger" (click)="del(item.id)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
