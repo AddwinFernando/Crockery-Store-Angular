@@ -19,6 +19,7 @@ import { AdminOrdersComponent } from './component/admin/orders/orders.component'
 import { CartComponent } from './component/cart/cart.component';
 import { OrdersComponent } from './component/orders/orders.component';
 import { NavbarComponent } from './component/navbar/navbar.component';
+import { CategoryComponent } from './component/admin/category/category.component';
 
 export function playerFactory() {
   return player;
@@ -36,6 +37,7 @@ export function playerFactory() {
     CartComponent,
     OrdersComponent,
     NavbarComponent,
+    CategoryComponent,
   ],
   imports: [
     BrowserModule,

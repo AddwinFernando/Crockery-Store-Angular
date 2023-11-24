@@ -11,18 +11,20 @@ export class HomeService {
   error: String = '';
   constructor(private http: HttpClient) {}
 
-  getAllBooks(): void {
-    console.log('called');
-
-    this.http.get<AppResponse>(`${urlEndpoint.baseUrl}/book/all`).subscribe({
-      next: (response) => {
-        console.log(response.data);
-        return response;
-      },
-      error: (err) => {
-        let message: String = err.error.error.message;
-        this.error = message.includes(',') ? message.split(',')[0] : message;
-      },
-    });
+  getProducts(): Observable<AppResponse> {
+    return this.http.get<AppResponse>(`${urlEndpoint.baseUrl}/item/all`);
   }
+
+  addToCart(body:any): Observable<AppResponse> {
+    return this.http.post<AppResponse>(`${urlEndpoint.baseUrl}/cart/add`,body);
+  }
+  
+  getUserCart(id:number): Observable<AppResponse> {
+    return this.http.get<AppResponse>(`${urlEndpoint.baseUrl}/cart/get/${id}`);
+  }
+
+  removeFromCart(userId:number,id:number): Observable<AppResponse>{
+    return this.http.delete<AppResponse>(`${urlEndpoint.baseUrl}/cart/remove/${userId}/${id}`);
+  }
+
 }

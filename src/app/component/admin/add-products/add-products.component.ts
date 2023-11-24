@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Form } from '@angular/forms';
+import { Form, NgForm } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Category } from 'src/app/model/category';
 import { Item } from 'src/app/model/item';
@@ -53,7 +53,7 @@ export class AddProductsComponent implements OnInit {
     });
   }
 
-  add(addForm: Form): void {
+  add(addForm: NgForm): void {
     if (this.param) {
       let item: Item = {
         id: this.param,
@@ -70,6 +70,7 @@ export class AddProductsComponent implements OnInit {
         },
         complete: () => console.log('There are no more action happen.'),
       });
+      addForm.reset();
     } else {
       let item: Item = {
         id: null,
@@ -86,6 +87,7 @@ export class AddProductsComponent implements OnInit {
         },
         complete: () => console.log('There are no more action happen.'),
       });
+      addForm.reset();
     }
   }
 }

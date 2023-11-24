@@ -1,5 +1,5 @@
 export interface Item {
-  id: number | null ;
+  id: number|null;
   title: String;
   description: String;
   category:number;

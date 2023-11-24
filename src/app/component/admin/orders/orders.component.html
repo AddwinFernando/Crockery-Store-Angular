@@ -1,17 +1,54 @@
+<navbar></navbar>
 <div class="container-fluid">
   <div class="container">
     <table class="table mt-5">
       <thead>
         <tr>
           <th scope="col">Order-ID</th>
-          <th scope="col">Date</th>
-          <th scope="col">Customer Email</th>
-          <th scope="col">Product</th>
+          <th scope="col">Customer Name</th>
+          <th scope="col">Products</th>
           <th scope="col">Price</th>
           <th scope="col">Status</th>
         </tr>
       </thead>
-      <tbody id="adminOrderTable"></tbody>
+      <tbody id="adminOrderTable">
+        <tr *ngFor="let order of orders">
+          <td>{{ order.id }}</td>
+          <td>{{ order.name }}</td>
+          <td>
+            <table>
+              <tr *ngFor="let orderitem of order.orderedItems">
+                <td>{{ orderitem.title }}</td>
+              </tr>
+            </table>
+          </td>
+          <td>
+            <table>
+              <tr *ngFor="let orderitem of order.orderedItems">
+                <td>{{ orderitem.price }}</td>
+              </tr>
+            </table>
+          </td>
+          <td>
+            <div class="form-floating flex-row">
+              <select
+                class="form-select"
+                aria-label="Default select example"
+                id="categorySelector"
+                ngModel
+                [(ngModel)]="status"
+              >
+                <option value="1">Pending</option>
+                <option value="2">Out For Delivery</option>
+                <option value="3">Delivered</option>
+                <option value="4">Delivered</option>
+              </select>
+              <label for="floatingTextarea2">Status</label>
+              <button class="btn btn-outline-dark" (click)="setStatus(order.id)">Set Status</button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
     </table>
   </div>
 </div>
