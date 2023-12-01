@@ -1,27 +1,51 @@
-# CrockeryStoreAngular
+Crockery Store
+Description
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.5.
+➡️ Crockery store is a E-commerce site which sells plates, dishes, cups, and other similar items.
+➡️ The site shows available products users can register login and browse the products, users can add products to their cart, and place the order, from orders page users can veiw their order summary and their order status
+➡️ The site has role based logging in , admin can log in to veiw the products available in their site, admin can add , edit and delete the products , Admin can veiw the orders placed and set the status of each orders (pending,) 
+Credentials
 
-## Development server
+👉 Role - Admin
+    📧Email = "Admin" | 🔐Password = "Admin"
+👉 Role - User
+    📧Email = "user" | 🔐Password = "user"
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Technologies used
 
-## Code scaffolding
+👉 '💻-Spring Boot Java' for Back end
+👉 '💻-Angular' for Front end 
+👉 '🗃️-MySql' for Database 
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Screenshots
 
-## Build
+🔗 ![image](https://github.com/AddwinFernando/Crockery-Store-Angular/assets/145537565/e3ba08e1-851d-41b3-8654-b2cdfb1f6d62)
+🔗 ![image](https://github.com/AddwinFernando/Crockery-Store-Angular/assets/145537565/c306045f-3ee8-46fe-a136-ff12e1219767)
+🔗 ![image](https://github.com/AddwinFernando/Crockery-Store-Angular/assets/145537565/4bf3f105-3f39-4e7d-9a00-f0e9f5b7ee6e)
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Challenges
 
-## Running unit tests
+🔴 Faced Challenges while maping the SQL schema
+🔴 Infinite looping in response JSON
+🔴 Faced Challenges While uploading webp images
+🔴 Faced challenge for @OnetoOne mapping for duplicate datas.
+🔴 Faced challenges in Cascade deletions (deleting a parent record while it is linked to a chiled through foreign key)
+Hardest Errors
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+🚩 Internal server error hibernate nested exception - Solved it by reworking on the modal mapping.
+🚩 Internal server error for delete nested entities - Solved it by adding cascade type ALL.
+🚩 Altering the entity and updating it.
+🚩 Handling logic for more than 1 row found for one to one mapping.
 
-## Running end-to-end tests
+Repository Link
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+🔗 Front End - [Repo-Link](https://github.com/AddwinFernando/Crockery-Store-Angular)
+🔗 Back End - [Repo-Link](https://github.com/AddwinFernando/Crockery-Store-Spring)
 
-## Further help
+MySQL Schema
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+👉 ![image](https://github.com/AddwinFernando/Crockery-Store-Angular/assets/145537565/06a3c0ec-0213-4080-9659-5f3eeaf03891)
+
+Demo Video Url
+
+🔗 [Demo Video](https://drive.google.com/file/d/11mDkZNA_1IcbPhapAmAYC6E6AiNE_WE9/view?usp=sharing)
