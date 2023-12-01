@@ -1,10 +1,16 @@
 import { Component, OnInit } from '@angular/core';
+import { AnimationOptions } from 'ngx-lottie';
+import { Address } from 'src/app/model/address';
+import { AppUser } from 'src/app/model/appUser';
 import { Cart } from 'src/app/model/cart';
 import { CartResp } from 'src/app/model/cart-resp';
 import { Item } from 'src/app/model/item';
+import { Stock } from 'src/app/model/stock';
 import { CartService } from 'src/app/service/cart.service';
 import { HomeService } from 'src/app/service/home.service';
+import { ProfileService } from 'src/app/service/profile.service';
 import { StorageService } from 'src/app/service/storage.service';
+import { urlEndpoint } from 'src/app/utils/constant';
 
 @Component({
   selector: 'app-cart',
@@ -12,14 +18,37 @@ import { StorageService } from 'src/app/service/storage.service';
   styleUrls: ['./cart.component.css'],
 })
 export class CartComponent implements OnInit {
+  options: AnimationOptions = {
+    path: '/assets/emptycart.json',
+  };
   UserCart: CartResp[] = [];
-
+  StockReq: Stock[] = [];
+  addresses: Address[]=[];
+  address:number = 0;
+  user: AppUser = {
+    id: 0,
+    username: '',
+    password: '',
+    role: '',
+  };
   constructor(
     private homeService: HomeService,
     private storageService: StorageService,
-    private cartService: CartService
+    private cartService: CartService,
+    private profileService:ProfileService
   ) {}
   ngOnInit(): void {
+
+    this.user = this.storageService.getLoggedInUser();
+    this.profileService
+      .getUserAddress(this.storageService.getLoggedInUser().id)
+      .subscribe({
+        next: (resp: any) => {
+          this.addresses = resp.data;
+          console.log(this.addresses);
+        },
+      });
+
     this.homeService
       .getUserCart(this.storageService.getLoggedInUser().id)
       .subscribe({
@@ -28,6 +57,11 @@ export class CartComponent implements OnInit {
           console.log(this.UserCart);
         },
       });
+  }
+
+  getTotal():number{
+    let Total:number = this.UserCart.reduce((sum, a) => sum+ (a.item.price*a.count), 0);
+    return Total
   }
 
   getCartItemCount(id: number): number {
@@ -92,13 +126,32 @@ export class CartComponent implements OnInit {
     }
   }
 
-  checkout(): void{
-    let checkOutData:any = {
+  checkout(): void {
+    let checkOutData: any = {
       userId: this.storageService.getLoggedInUser().id,
-      addressId:1
+      addressId: this.address,
+    };
+    for (let item of this.UserCart) {
+      let stock: Stock = {
+        id: item.item.id!,
+        stock: item.count,
+      };
+      this.StockReq.push(stock);
     }
+    console.log(checkOutData);
+    
+    this.cartService.updateStock(this.StockReq).subscribe({
+      next: () => (this.StockReq = []),
+    });
     this.cartService.checkout(checkOutData).subscribe({
-      next: (resp:any)=> console.log(resp)
-    })
+      next: (resp: any) => console.log(resp),
+    });
+  }
+  getPhoto(id:number):String{
+    return `${urlEndpoint.baseUrl}/download/${id}`
+  }
+  getCartCount():number{
+    let count=this.UserCart.reduce((num,item)=>num+item.count,0);
+    return count;
   }
 }

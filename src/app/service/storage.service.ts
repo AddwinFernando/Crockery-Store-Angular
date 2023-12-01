@@ -6,7 +6,12 @@ import { AppUser } from '../model/appUser';
 })
 export class StorageService {
   constructor() {}
-
+  setCartCount(count:number):void{
+    sessionStorage.setItem('cartCount',count.toString())
+  }
+  getCartCount():number{
+    return parseInt(sessionStorage.getItem('cartCount')!) 
+  }
   setLoggedInUser(user: AppUser): void {
     localStorage.setItem('loggedInUser', JSON.stringify(user));
   }

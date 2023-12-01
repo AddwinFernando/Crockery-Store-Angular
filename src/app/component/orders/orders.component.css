@@ -1,0 +1,16 @@
+.Pending {
+  background-color: #233142 !important;
+  color: white;
+}
+.OutForDelivery {
+  background-color: #005689 !important ;
+  color: white;
+}
+.Delivered {
+  background-color: #a9c52f !important;
+  color: black;
+}
+.Cancelled {
+  background-color: #dc2f2f !important;
+  color: white;
+}

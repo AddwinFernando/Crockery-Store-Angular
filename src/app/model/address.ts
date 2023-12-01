@@ -1,6 +1,7 @@
 export interface Address {
-    id:number;
-    address:String;
-    city:String;
-    zipcode:String;
+  id?: number;
+  address: String;
+  city: String;
+  zipcode: number;
+  userId: number;
 }

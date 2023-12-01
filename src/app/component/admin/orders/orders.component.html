@@ -36,15 +36,15 @@
                 aria-label="Default select example"
                 id="categorySelector"
                 ngModel
-                [(ngModel)]="status"
+                (change)="setStatus($event,order.id)"
               >
                 <option value="1">Pending</option>
                 <option value="2">Out For Delivery</option>
                 <option value="3">Delivered</option>
-                <option value="4">Delivered</option>
+                <option value="4">Cancelled</option>
               </select>
               <label for="floatingTextarea2">Status</label>
-              <button class="btn btn-outline-dark" (click)="setStatus(order.id)">Set Status</button>
+              <!-- <button class="btn btn-outline-dark" (click)="setStatus(order.id)">Set Status</button> -->
             </div>
           </td>
         </tr>

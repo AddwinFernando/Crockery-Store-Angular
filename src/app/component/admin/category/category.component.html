@@ -3,18 +3,19 @@
 <div class="d-flex flex-row">
   <div class="col-6">
     <div class="input d-flex flex-column align-items-center">
-      <div class="container d-flex flex-column mt-5">
-        <div class="cart-body">
-          <div class="d-flex justify-cotent-center">
+      <div class="container card mt-5 w-50">
+        <div class="card-body d-flex justify-content-center">
+          <div class="d-flex flex-column text-center">
+            <h4>{{titletxt}}</h4>
             <input
-              class="form-control border-primary w-50 mt-2 lr-input"
+              class="form-control border-primary mt-2 lr-input"
               type="text"
               placeholder="Category Name"
               id="category"
               aria-label="default input example"
               [(ngModel)]="category"
             />
-            <button class="btn btn-primary" (click)="add()">
+            <button class="btn btn2 mt-3" (click)="add()">
               {{ buttontxt }}
             </button>
           </div>
@@ -26,26 +27,28 @@
     <div class="table-div">
       <div class="table pt-5">
         <div class="container w-50">
-          <table class="table table-striped table-hover" id="table">
-            <thead class="w-100">
+          <div class="card">
+            <table class="table table-striped table-hover table-responsive text-center">
+            <thead>
               <tr>
                 <th scope="col">Category</th>
                 <th scope="col">Action</th>
               </tr>
             </thead>
-            <tbody class="table-group-divider" id="tbody">
+            <tbody>
               <tr *ngFor="let category of categories">
-                <th scope="row"></th>
                 <td>{{category.title}}</td>
                 <td>
-                  <button class="btn btn-danger" (click)="delete(category.id!)">Delete</button>
+                  <button class="btn btn-del" (click)="delete(category.id!)">Delete</button>
                 </td>
                 <td>
-                  <button class="btn border" (click)="edit(category.id!)">Edit</button>
+                  <button class="btn btn2" (click)="edit(category.id!)">Edit</button>
                 </td>
               </tr>
             </tbody>
           </table>
+          </div>
+          
         </div>
       </div>
     </div>

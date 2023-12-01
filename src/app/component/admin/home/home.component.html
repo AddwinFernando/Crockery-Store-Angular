@@ -1,30 +1,45 @@
 <navbar></navbar>
-<div class="d-flex mt-4 px-5 justify-content-end w-100">
+<!-- <div class="d-flex mt-4 px-5 justify-content-end w-100">
   <a class="btn btn-primary me-3" routerLink="/admin-add">Add Product</a>
   <a class="btn btn-primary ms-3" routerLink="/admin-category">Category</a>
-</div>
+</div> -->
 <div class="container">
-  <table class="table mt-5">
+  <div class="card">
+     <table class="table text-center">
     <thead>
       <tr>
         <th scope="col">Image</th>
         <th scope="col">Name</th>
         <th scope="col">Description</th>
         <th scope="col">Price</th>
+        <th scope="col">Stock</th>
         <th scope="col">Action</th>
       </tr>
     </thead>
     <tbody id="products">
       <tr *ngFor="let item of items">
-        <th scope="row"><img src="" alt="Image" /></th>
+        <th scope="row">
+          <img
+            src="{{ getPhoto(item.id!) }}"
+            alt="Image"
+            height="100px"
+            width="100px"
+          />
+        </th>
         <td>{{ item.title }}</td>
         <td>{{ item.description }}</td>
         <td>{{ item.price }}</td>
+        <td>{{ item.stock }}</td>
         <td>
-          <button class="btn me-2" (click)="edit(item.id)">Edit</button
-          ><button class="btn btn-danger" (click)="del(item.id)">Delete</button>
+          <button class="btn btn-del btn-danger" (click)="del(item.id)">
+            Delete
+          </button>
+          <button class="btn me-2" (click)="edit(item.id)">Edit</button>
         </td>
       </tr>
     </tbody>
   </table>
+  </div>
+
+ 
 </div>

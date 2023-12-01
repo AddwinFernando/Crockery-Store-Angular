@@ -6,6 +6,7 @@ import { Cart } from 'src/app/model/cart';
 import { StorageService } from 'src/app/service/storage.service';
 import { CartResp } from 'src/app/model/cart-resp';
 import { count } from 'rxjs';
+import { urlEndpoint } from 'src/app/utils/constant';
 
 @Component({
   selector: 'app-home',
@@ -19,6 +20,7 @@ export class HomeComponent implements OnInit {
     private storageService: StorageService
   ) {}
   ngOnInit(): void {
+    this.storageService.setCartCount(this.getCartCount())
     this.homeService.getProducts().subscribe({
       next: (response: any) => {
         this.Items = response.data.items;
@@ -34,10 +36,24 @@ export class HomeComponent implements OnInit {
       });
   }
 
+  getButtonText(id:number):String{
+    let Stock:number = this.Items.find((item)=>item.id===id)?.stock!;
+    if(Stock === 0){
+      return "Out of Stock"
+    } else{
+      return "Add to Cart"
+    }
+  }
+
+  getPhoto(id:number):String{
+    return `${urlEndpoint.baseUrl}/download/${id}`
+  }
+
   getCartItemCount(id: number): number {
     let count: number = this.UserCart.find(
       (cartItem) => cartItem.item.id === id
     )?.count!;
+
     return count;
   }
 
@@ -107,5 +123,9 @@ export class HomeComponent implements OnInit {
         },
       });
     }
+  }
+  getCartCount():number{
+    let count=this.UserCart.reduce((num,item)=>num+item.count,0);
+    return count;
   }
 }

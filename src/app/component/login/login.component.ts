@@ -12,7 +12,7 @@ import { AuthService } from 'src/app/service/auth.service';
 })
 export class LoginComponent {
   options: AnimationOptions = {
-    path: '/assets/auth.json',
+    path: '/assets/login-lottie.json',
   };
 
   username: String = '';

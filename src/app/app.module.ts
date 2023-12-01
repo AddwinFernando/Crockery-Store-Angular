@@ -20,6 +20,7 @@ import { CartComponent } from './component/cart/cart.component';
 import { OrdersComponent } from './component/orders/orders.component';
 import { NavbarComponent } from './component/navbar/navbar.component';
 import { CategoryComponent } from './component/admin/category/category.component';
+import { ProfileComponent } from './component/profile/profile.component';
 
 export function playerFactory() {
   return player;
@@ -38,6 +39,7 @@ export function playerFactory() {
     OrdersComponent,
     NavbarComponent,
     CategoryComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,

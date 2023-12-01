@@ -10,6 +10,7 @@ import { AddProductsComponent } from './component/admin/add-products/add-product
 import { CartComponent } from './component/cart/cart.component';
 import { OrdersComponent } from './component/orders/orders.component';
 import { CategoryComponent } from './component/admin/category/category.component';
+import { ProfileComponent } from './component/profile/profile.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -17,10 +18,11 @@ const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'cart', component: CartComponent },
   { path: 'orders', component: OrdersComponent },
-  { path: 'admin', component: AdminHomeComponent },
+  { path: 'admin', component: AdminHomeComponent},
   { path: 'admin-category', component: CategoryComponent },
   { path: 'admin-orders', component: AdminOrdersComponent },
   { path: 'admin-add', component: AddProductsComponent },
+  { path: 'profile', component: ProfileComponent },
 ];
 
 @NgModule({

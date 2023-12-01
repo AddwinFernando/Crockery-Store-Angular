@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Item } from 'src/app/model/item';
 import { AdminHomeService } from 'src/app/service/admin/adminHome.service';
+import { urlEndpoint } from 'src/app/utils/constant';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -36,5 +37,8 @@ export class AdminHomeComponent implements OnInit {
 
   edit(id: number | null) {
     this.router.navigate(['/admin-add'], { queryParams: { id: id } });
+  }
+  getPhoto(id:number):String{
+    return `${urlEndpoint.baseUrl}/download/${id}`
   }
 }

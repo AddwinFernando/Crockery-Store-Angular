@@ -45,6 +45,10 @@ export class AuthService {
       );
   }
 
+register(body:any):Observable<AppResponse>{
+  return this.http.post<AppResponse>(`${urlEndpoint.baseUrl}/auth/register`,body)
+}
+
   logout() {
     this.userSubject.next(null);
     this.isAdminSubject.next(false);

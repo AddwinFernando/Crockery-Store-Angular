@@ -12,6 +12,7 @@ export class CategoryComponent implements OnInit {
   categories: Category[] = [];
   category: String = '';
   buttontxt: String = 'Add';
+  titletxt:String = 'Add-Category'
   error: String = '';
   editState: number = 0;
   ngOnInit(): void {
@@ -52,6 +53,7 @@ export class CategoryComponent implements OnInit {
         },
       });
       this.buttontxt = 'Add';
+      this.titletxt = 'Add-Category'
       this.category = '';
     }
   }
@@ -70,6 +72,7 @@ export class CategoryComponent implements OnInit {
   edit(id: number) {
     this.category = this.categories.find((cat) => cat.id === id)?.title!;
     this.buttontxt = 'Edit';
+    this.titletxt = 'Edit-Category'
     this.editState = id;
   }
 }

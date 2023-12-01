@@ -1,57 +1,88 @@
-<section class="vh-100">
-  <div class="container py-5 h-100">
-    <div class="row d-flex align-items-center justify-content-center h-100">
-      <div class="col-6">
-        <ng-lottie [options]="options"></ng-lottie>
-      </div>
-      <div class="col-6">
-        <h2 class="display-4 text-primary">Register</h2>
-        <form>
-          <!-- Username input -->
-          <div class="form-outline mb-3">
-            <label class="form-label" for="username">Username</label>
-            <input type="text" id="username" class="form-control" />
-            <div class="error">Error</div>
-          </div>
+<section class="container-fluid vh-100 d-flex flex-row cont">
+  <div class="col-5 rt-reg-cont">
+    <div class="lottie">
+      <ng-lottie [options]="options"></ng-lottie>
+    </div>
+  </div>
 
-          <!-- Name input -->
-          <div class="form-outline mb-3">
-            <label class="form-label" for="name">Name</label>
-            <input type="text" id="name" class="form-control" />
-            <div class="error">Error</div>
-          </div>
-
-          <!-- Password input -->
-          <div class="form-outline mb-3">
-            <label class="form-label" for="password">Password</label>
-            <input type="password" id="password" class="form-control" />
-            <div class="error">Error</div>
-          </div>
-
-          <!-- Confirm Password input -->
-          <div class="form-outline mb-3">
-            <label class="form-label" for="confirmPassword"
-              >Confirm Password</label
-            >
-            <input type="password" id="confirmPassword" class="form-control" />
-            <div class="error">Error</div>
-          </div>
-
-          <div class="d-flex align-items-center mb-4">
-            <span>Already registered?</span>
-            <a
-              routerLink="/login"
-              class="text-primary text-decoration-none px-2"
-              >Login here</a
-            >
-          </div>
-
-          <!-- Submit button -->
-          <div class="d-grid gap-2 mb-5">
-            <button type="submit" class="btn btn-primary">Register</button>
-          </div>
-        </form>
-      </div>
+  <div class="col-7 lt-reg-cont container-fluid d-flex justify-content-center">
+    <div class="form w-50">
+      <h2 class="text-primary text-center mb-3">Register</h2>
+      <form #regForm="ngForm" (ngSubmit)="register(regForm)">
+        <!-- Username input -->
+        <div class="form-outline mb-3">
+          <input
+            type="email"
+            class="form-control lr-input"
+            placeholder="Email"
+            name="email"
+            ngModel
+            email
+            required
+            #email="ngModel"
+            [(ngModel)]="username"
+            [ngClass]="email.invalid && email.dirty ? 'is-invalid' : ''"
+          />
+        </div>
+        <!-- Name-Input -->
+        <div class="form-outline mb-3">
+          <input
+            type="text"
+            class="form-control lr-input"
+            placeholder="Name"
+            required
+            name="password"
+            [(ngModel)]="name"
+          />
+        </div>
+        <!-- Password input -->
+        <div class="form-outline mb-3">
+          <input
+            type="password"
+            class="form-control lr-input"
+            placeholder="Password"
+            name="password"
+            required
+            pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"
+            [(ngModel)]="password"
+            #formpassword="ngModel"
+            [ngClass]="formpassword.invalid ? 'is-invalid' : ''"
+          />
+        </div>
+        <div class="form-outline mb-3">
+          <input
+            type="password"
+            class="form-control lr-input"
+            placeholder="Confirm-Password"
+            name="cpassword"
+            required
+            [(ngModel)]="cpassword"
+            #formcpassword="ngModel"
+            [ngClass]="
+              formpassword.value === formcpassword.value ? '' : 'is-invalid'
+            "
+          />
+        </div>
+        <p class="error" [ngClass]="error.length > 0 ? 'visible' : 'invisible'">
+          {{ error }}
+        </p>
+        <div class="d-flex align-items-center mb-4">
+          <span>Already registered?</span>
+          <a routerLink="/login" class="text-primary text-decoration-none px-2"
+            >Login here</a
+          >
+        </div>
+        <!-- Submit button -->
+        <div class="d-grid gap-2">
+          <button
+            type="submit"
+            class="btn btn-primary lr-button"
+            [disabled]="!regForm.valid"
+          >
+            Register
+          </button>
+        </div>
+      </form>
     </div>
   </div>
 </section>

@@ -1,13 +1,13 @@
 <div class="container-fluid body-background">
   <navbar></navbar>
   <div
-    class="container-fluid d-flex justify-content-evenly mt-5 mb-5 row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3"
+    class="container-fluid d-flex justify-content-evenly row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3"
   >
     <div class="d-flex justify-content-center mt-5" *ngFor="let item of Items">
-      <div class="card" style="width: 20rem">
+      <div class="card prodcard text-justify" style="width: 20rem">
         <div class="text-center">
           <img
-            src="../../../assets/product.avif"
+            src="{{getPhoto(item.id!)}}"
             class="card-img-top"
             alt="..."
             style="object-fit: cover; width: 280px; height: 220px"
@@ -15,19 +15,28 @@
         </div>
 
         <div class="card-body">
-          <h5 class="card-title">{{ item.title }}</h5>
+          <h5 class="card-title fw-bolder">{{ item.title }}</h5>
           <p class="card-text">
             {{ item.description }}
           </p>
 
-          <div class="d-md-flex justify-content-around align-items-center">
+          <div class="d-md-flex justify-content-between align-items-center">
             <div class="text-center">
-              <p class="card-text pt-1">${{ item.price }}</p>
+              <p class="card-text pt-1 fw-bolder">${{ item.price }}</p>
             </div>
             <div class="" *ngIf="!getCartItemCount(item.id!)">
-              <button class="btn btn2" (click)="addToCart(item.id!)">Add To Cart</button>
+              <button
+                class="btn btn2"
+                (click)="addToCart(item.id!)"
+                [ngClass]="item.stock === 0 ? 'disabled' : ''"
+              >
+                {{getButtonText(item.id!)}}
+              </button>
             </div>
-            <div class="d-md-flex justify-content-md-end" *ngIf="getCartItemCount(item.id!)">
+            <div
+              class="d-md-flex justify-content-md-end"
+              *ngIf="getCartItemCount(item.id!)"
+            >
               <input
                 type="button"
                 value="-"
@@ -36,13 +45,14 @@
                 (click)="removeFromCart(item.id!)"
               />
               <p>
-                {{getCartItemCount(item.id!)}}
+                {{ getCartItemCount(item.id!) }}
               </p>
               <input
                 type="button"
                 value="+"
                 class="btn btn-outline-dark mx-3"
                 data-field="quantity"
+                *ngIf="!(item.stock === getCartItemCount(item.id!))"
                 (click)="addToCart(item.id!)"
               />
             </div>

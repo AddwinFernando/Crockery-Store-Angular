@@ -62,6 +62,26 @@
           </div>
         </div>
         <div class="input-group mb-3 mt-3">
+          <div class="form-floating mb-3">
+            <input
+              type="number"
+              class="form-control"
+              id="productStock"
+              placeholder="name@example.com"
+              name="stock"
+              [(ngModel)]="stock"
+              ngModel
+              #productStock="ngModel"
+              [ngClass]="
+                productStock.dirty && (stock < 0 || stock == 0)
+                  ? 'is-invalid'
+                  : ''
+              "
+            />
+            <label for="floatingInput">Stock</label>
+          </div>
+        </div>
+        <div class="input-group mb-3 mt-3">
           <div class="form-floating">
             <select
               class="form-select"
@@ -81,17 +101,23 @@
           </div>
         </div>
         <div class="input-group mb-3 mt-3">
+          <!-- <label for="floatingInputValue">Image URL</label> -->
           <input
-            type="email"
+            type="file"
             class="form-control"
             id="productThumbnail"
-            placeholder="name@example.com"
+            placeholder="Image"
             value="test@example.com"
+            ngModel
+            (change)="onFileChange($event)"
+            *ngIf="!param"
           />
-          <label for="floatingInputValue">Image URL</label>
+          
         </div>
 
-        <button type="submit" class="btn btn-primary mt-2">{{buttontxt}}</button>
+        <button type="submit" class="btn btn2 btn-primary mt-2">
+          {{ buttontxt }}
+        </button>
       </form>
     </div>
     <div>

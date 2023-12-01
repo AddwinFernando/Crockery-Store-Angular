@@ -1,10 +1,13 @@
-<div *ngIf="!isLoggedIn">
-  <router-outlet />
-</div>
-
-<div class="container-fluid vh-100 d-flex flex-column">
+<router-outlet />
+<!-- <main class="">
+      <router-outlet></router-outlet>
+    </main>
+<div *ngIf="!isAdmin">
+    <router-outlet></router-outlet>
+  </div>     -->
+<!-- <div class="container-fluid vh-100 d-flex flex-column">
   <div *ngIf="isAdmin" class="">
-    <!-- <div class="sidebar border border-right col-2 p-0">
+    <div class="sidebar border border-right col-2 p-0">
       <div class="bg-body-tertiary h-100" tabindex="-1">
         <div class="d-flex flex-column p-0 pt-3 overflow-y-auto">
           <ul class="nav flex-column">
@@ -27,16 +30,12 @@
           </ul>
         </div>
       </div>
-    </div> -->
-    <main class="">
-      <router-outlet></router-outlet>
-    </main>
+    </div>
+    
   </div>
-  <div *ngIf="!isAdmin">
-    <router-outlet></router-outlet>
-  </div>
-</div>
+  
+</div> -->
 
-<div *ngIf="loaderService.isLoading | async" class="loader">
+<!-- <div *ngIf="loaderService.isLoading | async" class="loader">
   <ng-lottie [options]="options"></ng-lottie>
-</div>
+</div> -->

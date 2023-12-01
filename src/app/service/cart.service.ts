@@ -14,4 +14,7 @@ export class CartService {
   checkout(body:any): Observable<AppResponse> {
     return this.http.post<AppResponse>(`${urlEndpoint.baseUrl}/orders/place`,body);
   }
+  updateStock(body:any): Observable<AppResponse> {
+    return this.http.put<AppResponse>(`${urlEndpoint.baseUrl}/item/update-stock`,body);
+  }
 }

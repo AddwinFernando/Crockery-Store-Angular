@@ -17,13 +17,13 @@ export class AdminHomeService {
   getProduct(id:number): Observable<AppResponse>{
     return this.http.get<AppResponse>(`${urlEndpoint.baseUrl}/admin/item/${id}`)
   }
-  addProduct(body:Item): Observable<AppResponse>{
+  addProduct(body:FormData): Observable<AppResponse>{
     return this.http.post<AppResponse>(`${urlEndpoint.baseUrl}/admin/item/add`,body);
   }
   deletePoduct(id:number|null):Observable<AppResponse>{
     return this.http.delete<AppResponse>(`${urlEndpoint.baseUrl}/admin/item/delete/${id}`)
   }
-  updateProduct(body:Item): Observable<AppResponse>{
+  updateProduct(body:any): Observable<AppResponse>{
     return this.http.put<AppResponse>(`${urlEndpoint.baseUrl}/admin/item/update`,body);
   }
 }
