@@ -16,13 +16,25 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: '', component: HomeComponent },
-  { path: 'cart', component: CartComponent },
-  { path: 'orders', component: OrdersComponent },
-  { path: 'admin', component: AdminHomeComponent},
-  { path: 'admin-category', component: CategoryComponent },
-  { path: 'admin-orders', component: AdminOrdersComponent },
-  { path: 'admin-add', component: AddProductsComponent },
-  { path: 'profile', component: ProfileComponent },
+  { path: 'cart', component: CartComponent, canActivate: [authGuard] },
+  { path: 'orders', component: OrdersComponent, canActivate: [authGuard] },
+  { path: 'admin', component: AdminHomeComponent, canActivate: [authGuard] },
+  {
+    path: 'admin-category',
+    component: CategoryComponent,
+    canActivate: [authGuard],
+  },
+  {
+    path: 'admin-orders',
+    component: AdminOrdersComponent,
+    canActivate: [authGuard],
+  },
+  {
+    path: 'admin-add',
+    component: AddProductsComponent,
+    canActivate: [authGuard],
+  },
+  { path: 'profile', component: ProfileComponent, canActivate: [authGuard] },
 ];
 
 @NgModule({

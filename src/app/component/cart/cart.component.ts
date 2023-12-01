@@ -23,8 +23,8 @@ export class CartComponent implements OnInit {
   };
   UserCart: CartResp[] = [];
   StockReq: Stock[] = [];
-  addresses: Address[]=[];
-  address:number = 0;
+  addresses: Address[] = [];
+  address: number = 0;
   user: AppUser = {
     id: 0,
     username: '',
@@ -35,10 +35,9 @@ export class CartComponent implements OnInit {
     private homeService: HomeService,
     private storageService: StorageService,
     private cartService: CartService,
-    private profileService:ProfileService
+    private profileService: ProfileService
   ) {}
   ngOnInit(): void {
-
     this.user = this.storageService.getLoggedInUser();
     this.profileService
       .getUserAddress(this.storageService.getLoggedInUser().id)
@@ -59,9 +58,12 @@ export class CartComponent implements OnInit {
       });
   }
 
-  getTotal():number{
-    let Total:number = this.UserCart.reduce((sum, a) => sum+ (a.item.price*a.count), 0);
-    return Total
+  getTotal(): number {
+    let Total: number = this.UserCart.reduce(
+      (sum, a) => sum + a.item.price * a.count,
+      0
+    );
+    return Total;
   }
 
   getCartItemCount(id: number): number {
@@ -139,19 +141,23 @@ export class CartComponent implements OnInit {
       this.StockReq.push(stock);
     }
     console.log(checkOutData);
-    
+
     this.cartService.updateStock(this.StockReq).subscribe({
-      next: () => (this.StockReq = []),
+      next: () => {
+        this.StockReq = [];
+      },
     });
     this.cartService.checkout(checkOutData).subscribe({
-      next: (resp: any) => console.log(resp),
+      next: (resp: any) => {
+        this.UserCart = [];
+      },
     });
   }
-  getPhoto(id:number):String{
-    return `${urlEndpoint.baseUrl}/download/${id}`
+  getPhoto(id: number): String {
+    return `${urlEndpoint.baseUrl}/download/${id}`;
   }
-  getCartCount():number{
-    let count=this.UserCart.reduce((num,item)=>num+item.count,0);
+  getCartCount(): number {
+    let count = this.UserCart.reduce((num, item) => num + item.count, 0);
     return count;
   }
 }
